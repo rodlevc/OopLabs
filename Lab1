@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class Trapeze {
+   float Basis1;
+   float Basis2;     // приватні змінні
+   float Top;
+   float Result;
+
+public:
+   Trapeze();        // конструктор без параметрів
+   Trapeze(float b1, float b2, float tpp); // конструктор з параметрами
+   ~Trapeze();       // деструктор
+
+   void setBasis1(float b1);
+   void setBasis2(float b2);
+   void setTop(float tpp);
+
+   void calc();
+   void p_sqrt();
+};
+Trapeze::Trapeze (){
+   Basis1 = Basis2 = Top = 0;
+   cout << "Конструктор без параметрів\n" << endl;
+}
+Trapeze::Trapeze (float b1, float b2, float tpp){
+   b1 = b1;
+   b2 = b2;
+   tpp = tpp;
+   Result = 0;
+   cout << "\nКонструктор з параметрами\t" << b1 << "\t" << b2 << "\t" << tpp << endl;
+}
+Trapeze::~Trapeze (){
+   cout << "\nДеструктор\t" << endl;
+}
+void Trapeze::setBasis1(float b1){
+   Basis1 = b1;
+}
+void Trapeze::setBasis2(float b2){
+   Basis2 = b2;
+}
+void Trapeze::setTop(float tpp){
+   Top = tpp;
+}
+void Trapeze::calc(){
+   Result = (0.5*(Basis1+Basis2)*Top);
+}
+
+void Trapeze::p_sqrt(){
+   cout << "\nОснова1\t" << Basis1 << endl;
+   cout << "\nОснова2\t" << Basis2 << endl;
+   cout << "\nВисота\t" << Top << endl;
+   cout << "\nПлоща\t" << Result << endl;
+}
+int main() {
+  Trapeze a;
+   a.setBasis1(2);
+   a.setBasis2(2);
+   a.setTop(4);
+
+   a.calc();
+
+   a.p_sqrt();
+}

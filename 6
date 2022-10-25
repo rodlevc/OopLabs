@@ -1,0 +1,112 @@
+#include <iostream>
+using namespace std;
+
+//Визначимо базовий клас Друкарня
+class PrintingHouse 
+{
+ int price;
+ string type;
+ public:
+ void set_price(int num) {price = num;}
+ int get_price() {return price;}
+ void set_type(string text) {type = text;}
+ string get_type() {return type;}
+};
+
+//Визначимо клас Журнал
+class Magazine : public PrintingHouse 
+{
+ int date;
+ string material; //Матеріал журналу
+ public:
+ Magazine() {string material="";}
+ ~Magazine() {}
+ void set_date(int num) {date = num;}
+ int get_date() {return date;}
+ void set_material(string text) {material = text;}
+ string get_material() {return material;}
+ void show ();
+};
+
+//Визначимо клас Книга
+class Book : public PrintingHouse
+{
+ string genre; //Жанр книги
+ public:
+ Book() {string genre ="";}
+ ~Book() {}
+ void set_genre(string text) {genre = text;}
+ string get_genre() {return genre;}
+ void show ();
+};
+
+//Визначимо клас Підручник
+class TextBook : public PrintingHouse
+{
+ int date;
+ string subject; //Предмет підручника
+ public:
+ TextBook() {string subject="";}
+ ~TextBook() {}
+ void set_date(int num) {date = num;}
+ int get_date() {return date;}
+ void set_subject(string text) {subject = text;}
+ string get_subject() {return subject;}
+ void show();
+};
+
+void Magazine::show()
+{
+ cout << "Матеріал:" << get_material() << endl;
+ cout << "Дата Видання:" << get_date() << endl;
+ cout << "Тип Публікацій:" << get_type() << endl;
+ cout << "Ціна:" << get_price() << "грн" << endl << endl;
+}
+
+void Book::show()
+{
+  cout << "Жанр:" << get_genre() << endl;
+  cout << "Тип Публікацій:" << get_type() << endl;
+  cout << "Ціна:" << get_price() << "грн" << endl << endl;
+}
+
+void TextBook::show()
+{
+  cout << "Дата Видання:" << get_date() << endl;
+  cout << "Предмет:" << get_subject() << endl;
+  cout << "Тип Публікацій:" << get_type() << endl;
+  cout << "Ціна:" << get_price() << "грн" << endl << endl;
+}
+
+
+int main() 
+{
+  if(true)
+  {
+    
+
+    PrintingHouse $;
+
+    Magazine a;
+    Book b;
+    TextBook c;
+
+    a.set_material("Глянець");
+    a.set_date(25102022);
+    a.set_type("VOGUE");
+    a.set_price(50);
+
+    b.set_genre("Хоррор");
+    b.set_type("Метро");
+    b.set_price(22);
+
+    c.set_date(11092010);
+    c.set_subject("Математика");
+    c.set_type("Підручник");
+    c.set_price(32);
+
+    a.show();
+    b.show();
+    c.show();
+  }
+}

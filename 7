@@ -1,0 +1,54 @@
+# OopLabs
+
+
+class Organization
+{
+public:
+virtual void GetInfo()=0;
+};
+
+class InsuranceCompany : public Organization
+{
+public:
+void GetInfo()
+{
+cout<<"Загородній В.В."<<endl;
+cout<<"15 полісів"<<endl;
+cout<<"15000 грн"<<endl;
+}
+};
+
+class BuildingCompany : public Organization
+{
+public:
+void GetInfo()
+{
+cout<<"Маківан К.Д."<<endl;
+cout<<"Смета: 500000 грн"<<endl;
+cout<<"Метраж: 150 кв м"<<endl;
+}
+};
+
+class MetroBud : public Organization
+{
+public:
+void GetInfo()
+{
+cout<<"Мінська - ВДНГ"<<endl;
+cout<<"134 пасажири"<<endl;
+cout<<"10 км"<<endl;
+}
+};
+
+int main()
+{
+SetConsoleOutputCP(1251);
+Engine *A[3];
+InsuranceCompany  B; BuildingCompany C; MetroBud D;
+A[0] = &B;
+A[1] = &C;
+A[2] = &D;
+
+for(int i=0; i<3; i++)
+A[i]->GetInfo();
+}

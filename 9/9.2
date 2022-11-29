@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double r, S, V;
+        GetInfo(out r);
+        GetData(r, out S, out V);
+        Console.Write($"S: {Math.Round(S, 2)}");
+        Console.Write("\n");
+        Console.Write($"V: {Math.Round(V, 2)}");
+        Console.Write("\n");
+    }
+    static void GetData(double r, out double S, out double V)
+    {
+        S = 4 * Math.PI * r * r;
+        V = (4 * Math.PI * r * r * r) / 3;
+    }
+    static void GetInfo(out double r)
+    {
+        Console.Write("r:");
+        r = double.Parse(Console.ReadLine());
+    }
+}

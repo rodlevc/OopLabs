@@ -1,0 +1,82 @@
+# OopLabs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double x, y, z;
+        double a;
+        GetInfo(out x, out y, out z);
+        GetData(x, y, z, out a);
+        Console.Write("a: " + a);
+        Console.Write("\n");
+        GetXAinfo(x, a);
+        Console.Write("\n");
+        GetCycle( x, y,  z,  a);
+    }
+    static void GetData(double x, double y, double z, out double a)
+    {
+        a = (x * x + 4) / (Math.Pow(Math.Sin(z), 2) + (y / 2));
+    }
+    static void GetInfo( out double x, out double y, out double z)
+    {
+        Console.Write("x:");
+        x = double.Parse(Console.ReadLine());
+        Console.Write("y:");
+        y = double.Parse(Console.ReadLine());
+        Console.Write("z:");
+        z = double.Parse(Console.ReadLine());
+    }
+
+    static void GetCycle( double x,  double y, double z,  double a)
+    {
+
+        if(x!=0) 
+        do
+        {
+            GetInfo(out x, out y, out z);
+            GetData(x, y, z, out a);
+            Console.Write("a: " + a);
+            Console.Write("\n");
+            GetXAinfo(x, a);
+            Console.Write("\n");
+        }
+        while (x != 0);
+    }
+
+    static void GetXAinfo(double x,double a)
+    {
+     if (x<-10)
+        {
+        Console.Write("x: менш за -10 ");
+        }
+     else if (x<-1)
+        {
+        Console.Write("x: менш за -1 ");
+        }
+     else if (x>1)
+        {
+        Console.Write("x: > за 1");
+        }
+     else if (x > 10)
+        {
+        Console.Write("x: > за 10");
+        }
+     
+     if (a>0)
+        {
+            Console.Write("\na: позитивне\n");
+        }
+     else
+        {
+            Console.Write("\na: негативне\n");
+        }
+    }
+
+
+}

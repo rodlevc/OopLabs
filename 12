@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Cylinder
+    {
+        public double radius;
+        public double heigh;
+        public double volume;
+
+        // конструктор
+        public Cylinder() { radius = 0; heigh = 0; volume = 0; }
+        // конструктор
+        public Cylinder(double r, double h) { radius = r; heigh = h; }
+
+        public void GetInfo()
+        {
+            Console.WriteLine($"R: {radius} H: {heigh} V: {volume}\n");
+        }
+        public void GetInfo1()
+        {
+            Console.WriteLine($"R: {radius} H: {heigh}\n");
+        }
+
+        public void SetRadius(double r)
+        {
+            radius = r;
+        }
+        public void SetHeigh(double h)
+        {
+            heigh = h;
+        }
+
+        public double GetVolume()
+        {
+            volume = Math.PI * (radius * radius) * heigh;
+            return volume;
+        }
+        public void ToString()
+        {
+            Console.WriteLine($"R: {radius} H: {heigh} V: {Math.Round(volume, 2)} \n");
+        }
+
+        public static Cylinder operator + (Cylinder n1, Cylinder n2)
+        {
+            Cylinder temp = new Cylinder();
+            temp.volume = n1.volume + n2.volume;
+            if (n1.radius > n2.radius) 
+            {
+                temp.radius = n1.radius;
+            }
+            if (n2.radius > n1.radius)
+            {
+                temp.radius = n2.radius;
+            }
+            temp.heigh = n1.heigh + n2.heigh;
+            return temp;
+        }
+
+
+    }
+    class Program
+    {
+            static void Main(string[] args)
+            {
+            Cylinder cylinder0 = new Cylinder();
+            Cylinder cylinder1 = new Cylinder();
+            Cylinder cylinder2 = new Cylinder(9, 4);
+
+            cylinder1.GetInfo();
+            cylinder2.GetInfo1();
+            cylinder2.GetVolume();
+
+            cylinder1.SetRadius(6);
+            cylinder1.SetHeigh(3);
+            cylinder1.GetVolume();
+            cylinder1.ToString();
+
+            cylinder0 = cylinder1 + cylinder2;
+            cylinder0.ToString();
+            Console.ReadKey();
+            }
+    }
+   
+}

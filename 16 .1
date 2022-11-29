@@ -1,0 +1,54 @@
+# OopLabs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    delegate double Function(double x);
+    class Function1
+    {
+        static double Fun1(double x)
+        {
+            double e = Math.E;
+            return 1 / Math.Pow(e, x);
+        }
+        static double Fun2(double x)
+        {
+            return 1 / Math.Sqrt(Math.Pow(x, 2));
+        }
+        static double Fun3(double x)
+        {
+            return (1 / x) * Math.Cos(x);
+        }
+
+        public static double Trapezoidal(Function xx, double a, double b, int n)
+        {
+            double sum = 0.0;
+            double h = (b - a) / n;
+            for (int i = 0; i < n; i++)
+            {
+                sum += 0.5 * h * (xx(a + i * h) + xx(a + (i + 1) * h));
+            }
+            return sum;
+        }
+
+        static void Main(string[] args)
+        {
+            int n = 10000;
+            double result;
+            double a = 10;
+            double b = 9;
+
+            result = Trapezoidal(Fun1, a, b, n);
+            Console.WriteLine("Result = " + result.ToString());
+            result = Trapezoidal(Fun2, a, b, n);
+            Console.WriteLine("Result = " + result.ToString());
+            result = Trapezoidal(Fun3, a, b, n);
+            Console.WriteLine("Result = " + result.ToString());
+            Console.ReadKey();
+        }
+    }
+}

@@ -1,0 +1,52 @@
+# OopLabs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Myevent
+{
+
+    delegate void MyEventHandler(ConsoleKeyInfo k);
+
+    class MyClassWithEvent
+    {
+        public event MyEventHandler AnyKeyPress; 
+        public void fire()
+        {
+
+            if (Console.ReadKey(true).Key != ConsoleKey.I)
+            {
+                ConsoleKeyInfo k = Console.ReadKey(true);
+                AnyKeyPress(k);
+                fire();
+            }
+            else
+            {
+                ConsoleKeyInfo k = Console.ReadKey(true);
+                AnyKeyPress(k);
+                Console.WriteLine("Ivan");
+            }
+
+
+        
+        }
+    }
+    class Program
+    {
+        static void handler(ConsoleKeyInfo k)
+        {
+            char c = k.KeyChar;
+            Console.WriteLine("Вiдбулася подiя: натискання клавiшi '{0}'", c);
+        }
+        static void Main()
+        {
+  
+            MyClassWithEvent evt = new MyClassWithEvent(); 
+            evt.AnyKeyPress += new MyEventHandler(handler); 
+            evt.fire();
+            
+        }
+    }
+}
